@@ -1,0 +1,149 @@
+<html lang="en"
+>
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Pathfinder</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/mobile.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" rel="stylesheet">
+    <link crossorigin="" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          rel="stylesheet"/>
+    <script crossorigin=""
+            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+            src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+</head>
+<body>
+<main class="p-5 align-content-center bg-blur my-register-div">
+    <h1 class="border-bottom">Register</h1>
+    <div class="d-flex justify-content-center ">
+        <div class="row g-3">
+            <form
+                    action="/"
+                    method="">
+                <div>
+                    <div class="col-auto">
+                        <label class="col-form-label " for="inputUsername">Username</label>
+                    </div>
+                    <div class="col-auto">
+                        <input aria-describedby="usernameHelpInline"
+
+                               class="form-control" id="inputUsername" maxlength="20"
+                               minlength="5"
+                               name="username"
+                               required
+                               type="text">
+                        <small class="invalid-feedback bg-danger rounded"
+                               id="usernameError">Username length must be more than 3
+                            characters</small>
+
+                        <small class=" bg-danger rounded"
+                               id="usernameUniqueError">Username is already occupied</small>
+
+                    </div>
+                </div>
+
+                <div>
+                    <div class="col-auto">
+                        <label class="col-form-label " for="inputFullName">Full Name</label>
+                    </div>
+                    <div class="col-auto">
+                        <input aria-describedby="fullNameHelpInline"
+                               class="form-control" id="inputFullName" maxlength="20"
+                               minlength="5"
+                               name="fullname"
+                               required
+                               type="text">
+                        <small class="invalid-feedback  form-text bg-danger rounded"
+                               id="fullNameError">Full name length must be more than
+                            3 characters</small>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="col-auto">
+                        <label class="col-form-label " for="inputEmail">Email</label>
+                    </div>
+                    <div class="col-auto">
+                        <input aria-describedby="emailHelpInline"
+                               class="form-control"
+                               id="inputEmail"
+                               name="email"
+                               required
+                               type="email">
+                        <small class="invalid-feedback  form-text bg-danger rounded"
+                               id="emailError">Must be valid email</small>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-auto">
+                        <label class="col-form-label " for="inputAge">Age</label>
+                    </div>
+                    <div class="col-auto">
+                        <input aria-describedby="ageHelpInline" class="form-control"
+                               id="inputAge"
+                               max="90"
+                               min="0"
+                               name="age" required
+                               type="number">
+                        <small class="invalid-feedback  form-text bg-danger rounded"
+                               id="ageError">Must be valid age</small>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-auto">
+                        <label class="col-form-label " for="inputPassword">Password</label>
+                    </div>
+                    <div class="col-auto">
+                        <input aria-describedby="passwordHelpInline"
+                               class="form-control" id="inputPassword" maxlength="20"
+                               minlength="5"
+                               name="password"
+                               required
+                               type="password">
+                        <small class="invalid-feedback  form-text bg-danger rounded"
+                               id="passwordError">
+                            Password length must be between 5 and 20 characters and passwords should match.
+                        </small>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="col-auto">
+                        <label class="col-form-label " for="inputConfirmPassword">Confirm Password</label>
+                    </div>
+                    <div class="col-auto">
+                        <input aria-describedby="confirmPasswordHelpInline"
+                               class="form-control" id="inputConfirmPassword" maxlength="20"
+                               minlength="5"
+                               name="confirmPassword"
+                               required
+                               type="password">
+                        <small class="invalid-feedback  form-text bg-danger rounded"
+                               id="confirmPasswordError">
+                            Password length must be between 5 and 20 characters and passwords should match.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center mt-4">
+                    <button class="btn btn-primary btn-block w-50" type="submit">Register</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</main>
+<footer class="footer bg-blur rounded">
+    <div class="container-fluid text-center">
+        <div class="h5 text-white">
+            &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
+        </div>
+    </div>
+</footer>
+</body>
+</html>

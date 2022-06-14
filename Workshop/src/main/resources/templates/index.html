@@ -1,0 +1,85 @@
+<html lang="en">
+
+<head th:replace="fragments/common::head"></head>
+<body>
+<div class="wrapper">
+    <!-- Navigation -->
+    <header th:replace="fragments/common::navigation"></header>
+    <!-- Top Container -->
+    <section class="top-container">
+        <div class="showcase">
+            <h1>Find amazing routes</h1>
+            <p>Sick of staying at home, sick of limitations? Be free! Find a route and enjoy nature!</p>
+            <a class="btn" href="/routes">To routes</a>
+        </div>
+        <div class="top-box top-box-a">
+            <h4>Времето в София</h4>
+            <h4><span id="box-a-temp">15</span><span>&#8451;</span></h4>
+            <img alt="" height="150px" id="box-a-img" src="/images/sun.png">
+        </div>
+        <div class="top-box top-box-b">
+            <h4>Времето в Созопол</h4>
+            <h4><span id="box-b-temp">27</span><span>&#8451;</span></h4>
+            <img alt="" height="150px" id="box-b-img" src="/images/cloudy.png">
+        </div>
+    </section>
+
+    <!-- Boxes Section -->
+    <section class="boxes">
+        <a class="main-btn" href="/">
+            <div class="box">
+                <img alt="" height="150px" src="/images/pedestrian.png">
+                <h3>Pedestrian</h3>
+                <p>Is this your Leg day?</p>
+            </div>
+        </a>
+        <a class="main-btn" href="/">
+            <div class="box">
+                <img alt="" height="150px" src="/images/bicycle.png">
+                <h3>Bicycle</h3>
+                <p>When you want to be one with nature!</p>
+            </div>
+        </a>
+        <a class="main-btn" href="/">
+            <div class="box">
+                <img alt="" height="150px" src="/images/motorcycle.png">
+                <h3>Motorcycle</h3>
+                <p>When you want the wind to blow on your face!</p>
+            </div>
+        </a>
+        <a class="main-btn" href="/">
+            <div class="box">
+                <img alt="" height="150px" src="/images/car.png">
+                <h3>Car</h3>
+                <p>Going on a trip with friends?</p>
+            </div>
+        </a>
+    </section>
+
+    <!-- Info Section -->
+    <section class="road">
+        <img alt="" src="/images/most-commented.jpg">
+        <div>
+            <h2>The most commented route</h2>
+            <p>Read more about the most commented route and do not miss the
+                chance to visit it and give your opinion to help other users.</p>
+            <a class="btn" href="/">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="gallery">
+        <img alt="" height="200px"
+             src="http://res.cloudinary.com/ch-cloud/image/upload/v1630583467/koncyanx4gqwzt9vxgx4.jpg" width="200px">
+        <img alt="" height="200px"
+             src="http://res.cloudinary.com/ch-cloud/image/upload/v1630582448/oowojgn4lagybkvv20jb.jpg" width="200px">
+    </section>
+
+    <!-- <script th:src="@{/js/weather.js}"></script> -->
+</div>
+<!-- Wrapper Ends -->'
+
+<footer th:replace="fragments/common::footer"></footer>
+</body>
+
+</html>
