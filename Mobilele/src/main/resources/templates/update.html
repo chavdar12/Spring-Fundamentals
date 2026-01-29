@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head::head"></head>
+
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar">
+    Navbar
+</div>
+
+
+<div class="container">
+    <h2 class="text-center text-white">Update Offer</h2>
+    <form
+            class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center"
+            th:action="@{/offers/{id}/edit(id=*{id})}"
+            th:method="patch"
+            th:object="${offerModel}">
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label class="text-white font-weight-bold" for="mileage">Mileage</label>
+                <input
+                        class="form-control"
+                        id="mileage"
+                        placeholder="Mileage in kilometers"
+                        th:errorclass="is-invalid"
+                        th:field="*{mileage}"
+                        type="number"/>
+                <p class="invalid-feedback errors alert alert-danger">
+                    Mileage in kilometers is required.
+                </p>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label class="text-white font-weight-bold" for="price">Price</label>
+                <input
+                        class="form-control"
+                        id="price"
+                        placeholder="Suggested price"
+                        th:errorclass="is-invalid" th:field="*{price}"
+                        type="number"/>
+                <p class="invalid-feedback errors alert alert-danger">
+                    Suggested price is required and should be more than 100 BG.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label class="text-center text-white font-weight-bold" for="engine">Engine</label>
+                <select
+                        class="form-control"
+                        id="engine"
+                        th:errorclass="is-invalid" th:name="engine">
+                    <option value="">- Select engine type -</option>
+                    <option
+                            th:each="anEngine : ${engines}"
+                            th:selected="${anEngine} == *{engine}"
+                            th:text="${anEngine}"
+                            th:value="${anEngine}"
+                    >
+                        Engine type
+                    </option>
+                </select>
+                <p class="invalid-feedback errors alert alert-danger">
+                    Engine type is required.
+                </p>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label class="text-center text-white font-weight-bold" for="transmission">Transmission</label>
+                <select
+                        class="form-control"
+                        id="transmission"
+                        name="transmission"
+                        th:errorclass="is-invalid">
+                    <option value="">- Select transmission type -</option>
+                    <option th:each="aTransmission : ${transmissions}"
+                            th:selected="${aTransmission} == *{transmission}"
+                            th:text="${aTransmission}"
+                            th:value="${aTransmission}"> Transmission type
+                    </option>
+                </select>
+                <p class="invalid-feedback errors alert alert-danger">
+                    Transmission type is required.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label class="text-white font-weight-bold" for="year">Year</label>
+                <input
+                        class="form-control"
+                        id="year"
+                        placeholder="Manufacturing year"
+                        step="1" th:errorclass="is-invalid" th:field="*{year}"
+                        type="number"/>
+                <p class="invalid-feedback errors alert alert-danger">
+                    Manufacturing year is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="text-white font-weight-bold" for="description">Description</label>
+            <textarea class="form-control"
+                      id="description"
+                      placeholder="Description"
+                      rows="3" th:errorclass="is-invalid" th:field="*{description}"
+                      type="textarea"></textarea>
+            <p class="invalid-feedback errors alert alert-danger">
+                Description is required.
+            </p>
+        </div>
+        <div class="form-group">
+            <label class="text-white font-weight-bold" for="imageUrl">Image URL</label>
+            <input class="form-control"
+                   id="imageUrl"
+                   placeholder="Put vehicle image URL here"
+                   th:errorclass="is-invalid" th:field="*{imageUrl}"
+                   type="url">
+            <p class="invalid-feedback errors alert alert-danger">
+                Vehicle image URL is required.
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col col-md-4">
+                <div class="button-holder d-flex">
+                    <input class="btn btn-info btn-lg" type="submit" value="Update Offer"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <footer></footer>
+</div>
+
+</body>
+</html>

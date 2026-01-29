@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head::head"></head>
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar">
+    Navbar
+</div>
+
+
+<div class="container">
+    <h2 class="text-center text-white">Upload Offer</h2>
+    <form class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center" th:action="@{/offers/add}" th:method="POST"
+          th:object="${offerAddBindModel}">
+        <div class="row">
+
+            <div class="form-group col-md-6 mb-3">
+                <label class="text-center text-white font-weight-bold" for="model">Model</label>
+                <select class="form-control"
+                        id="modelId"
+                        name="modelId"
+                        th:errorclass="is-invalid">
+                    <option value="">- Select a model -</option>
+                    <optgroup label="Brand name" th:each="brand : ${brandsModels}" th:label="${brand.name}">
+                        <option th:each="model : ${brand.models}"
+                                th:selected="${model.id} == *{modelId}"
+                                th:text="${model.name}"
+                                th:value="${model.id}">Model
+                        </option>
+                    </optgroup>
+                </select>
+                <p class="errors alert alert-danger invalid-feedback">
+                    Vechicle model is required.
+                </p>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label class="text-white font-weight-bold" for="price">Price</label>
+                <input class="form-control" id="price" min="0"
+                       name="price" placeholder="Suggested price" step="100" th:errorclass="is-invalid" th:field="*{price}"
+                       type="number"/>
+                <p class="errors alert alert-danger invalid-feedback">
+                    Price is required, min 100.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label class="text-center text-white font-weight-bold" for="engine">Engine</label>
+                <select class="form-control" id="engine" name="engine" th:errorclass="is-invalid">
+                    <option value="">- Select engine type -</option>
+                    <option th:each="e : ${T(bg.softuni.mobilelele.model.entity.enums.EngineEnum).values()}"
+                            th:selected="${e} == *{engine}" th:text="${e}" th:value="${e}"
+                    >Engine type
+                    </option>
+                </select>
+                <p class="errors alert alert-danger invalid-feedback">
+                    Engine type is required.
+                </p>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label class="text-center text-white font-weight-bold" for="transmission">Transmission</label>
+                <select class="form-control" id="transmission" name="transmission" th:errorclass="is-invalid">
+                    <option value="">- Select transmission type -</option>
+                    <option th:each="t : ${T(bg.softuni.mobilelele.model.entity.enums.TransmissionEnum).values()}"
+                            th:selected="${t} == *{transmission}" th:text="${t}" th:value="${t}"
+                    > Transmission type
+                    </option>
+                </select>
+                <p class="errors alert alert-danger invalid-feedback">
+                    Transmission type is required.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label class="text-white font-weight-bold" for="year">Year</label>
+                <input class="form-control" id="year" max="2099"
+                       min="1900" name="year" placeholder="Manufacturing year" step="1" th:errorclass="is-invalid" th:field="*{year}"
+                       type="number"/>
+                <p class="errors alert alert-danger invalid-feedback">
+                    Manufacturing year is required, and must be after 1930.
+                </p>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label class="text-white font-weight-bold" for="mileage">Mileage</label>
+                <input class="form-control" id="mileage" max="900000"
+                       min="0" name="mileage" placeholder="Mileage in kilometers" step="1000" th:errorclass="is-invalid"
+                       th:field="*{mileage}"
+                       type="number"/>
+                <p class="errors alert alert-danger invalid-feedback">
+                    Mileage in kilometers is required, and must be positive.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="text-white font-weight-bold" for="description">Description</label>
+            <textarea class="form-control" id="description" name="description"
+                      placeholder="Description" rows="3" th:errorclass="is-invalid" th:field="*{description}"
+                      type="textarea"></textarea>
+            <p class="errors alert alert-danger invalid-feedback">
+                Description is required.
+            </p>
+        </div>
+        <div class="form-group">
+            <label class="text-white font-weight-bold" for="imageUrl">Image URL</label>
+            <input class="form-control" id="imageUrl" name="imageUrl"
+                   placeholder="Put vehicle image URL here" th:errorclass="is-invalid" th:field="*{imageUrl}"
+                   type="url">
+            <p class="errors alert alert-danger invalid-feedback">
+                Vehicle image URL is required.
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col col-md-4">
+                <div class="button-holder d-flex">
+                    <input class="btn btn-info btn-lg" type="submit" value="Submit Offer"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <footer></footer>
+</div>
+
+</body>
+</html>
