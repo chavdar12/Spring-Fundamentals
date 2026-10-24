@@ -9,18 +9,18 @@ INSERT INTO app_roles (id, name)
 VALUES (3, 'USER');
 
 -- some test users
-INSERT INTO app_users (id, age, full_name, level, password, username)
-VALUES (1, 28, 'Admin Adminov', 'ADVANCED', '12345', 'admin');
+INSERT INTO app_users (id, age, full_name, level, password, username, email)
+VALUES (1, 28, 'Admin Adminov', 'ADVANCED', '12345', 'admin', 'admin@example.com');
 
-INSERT INTO app_users (id, age, full_name, level, password, username)
+INSERT INTO app_users (id, age, full_name, level, password, username, email)
 VALUES (2, 29, 'Moderator Moderatorov', 'INTERMEDIATE', '12345',
-        'moderator');
+        'moderator', 'moderator@example.com');
 
-INSERT INTO app_users (id, age, full_name, level, password, username)
-VALUES (3, 30, 'User Userov', 'BEGINNER', '12345', 'user');
+INSERT INTO app_users (id, age, full_name, level, password, username, email)
+VALUES (3, 30, 'User Userov', 'BEGINNER', '12345', 'user', 'user@example.com');
 
-INSERT INTO app_users (id, age, full_name, level, password, username)
-VALUES (4, 33, 'Ivan Ivanov', 'BEGINNER', '12345', 'ivan');
+INSERT INTO app_users (id, age, full_name, level, password, username, email)
+VALUES (4, 33, 'Ivan Ivanov', 'BEGINNER', '12345', 'ivan', 'ivan@example.com');
 -- user roles
 -- admin
 INSERT INTO app_users_role (user_entity_id, role)

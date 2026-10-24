@@ -1,6 +1,6 @@
 package bg.softuni.mobilele.model.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.Instant;
 
 @MappedSuperclass
@@ -44,11 +44,10 @@ public abstract class BaseEntity {
 
     @PrePersist
     public void beforeCreate() {
-        System.out.println("BEFORE CREATE!");
         setCreated(Instant.now());
     }
 
-    @PostPersist
+    @PreUpdate
     void onUpdate() {
         setModified(Instant.now());
     }

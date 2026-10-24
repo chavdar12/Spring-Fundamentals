@@ -7,24 +7,28 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 @Service
 public class StatsServiceImpl implements StatsService {
 
-    private int anonymousRequests, authRequests;
+    // singleton shared by all request threads
+    private final AtomicInteger anonymousRequests = new AtomicInteger();
+    private final AtomicInteger authRequests = new AtomicInteger();
 
     @Override
     public void onRequest() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication != null && (authentication.getPrincipal() instanceof UserDetails)) {
-            authRequests++;
+            authRequests.incrementAndGet();
+        } else {
+            anonymousRequests.incrementAndGet();
         }
-
-        anonymousRequests++;
     }
 
     @Override
     public StatsView getStats() {
-        return new StatsView(authRequests, anonymousRequests);
+        return new StatsView(authRequests.get(), anonymousRequests.get());
     }
 }

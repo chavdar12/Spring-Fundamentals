@@ -2,9 +2,9 @@ package bg.softuni.mobilele.model.entity;
 
 import bg.softuni.mobilele.model.entity.enums.CategoryEnum;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
-import static javax.persistence.EnumType.STRING;
+import static jakarta.persistence.EnumType.STRING;
 
 @Entity
 @Table(name = "models")

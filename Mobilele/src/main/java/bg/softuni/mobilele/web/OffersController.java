@@ -19,11 +19,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.security.Principal;
 
 @Controller
 public class OffersController {
+    private static final String IS_OWNER = "@offerServiceImpl.isOwner(authentication.name, #id)";
+
     private final OfferService offerService;
     private final ModelMapper modelMapper;
     private final BrandService brandService;
@@ -51,7 +53,7 @@ public class OffersController {
         return "details";
     }
 
-    @PreAuthorize("isOwner(#id)")
+    @PreAuthorize(IS_OWNER)
     @DeleteMapping("/offers/{id}")
     public String deleteOffer(@PathVariable Long id) {
 
@@ -60,6 +62,7 @@ public class OffersController {
         return "redirect:/offers/all";
     }
 
+    @PreAuthorize(IS_OWNER)
     @GetMapping("/offers/{id}/edit")
     public String editOffer(@PathVariable Long id,
                             Model model,
@@ -86,6 +89,7 @@ public class OffersController {
         return "update";
     }
 
+    @PreAuthorize(IS_OWNER)
     @PatchMapping("/offers/{id}/edit")
     public String editOffer(@PathVariable Long id,
                             @Valid OfferUpdateBindingModel offerModel,

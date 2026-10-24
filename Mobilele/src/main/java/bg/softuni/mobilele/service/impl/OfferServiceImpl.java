@@ -89,7 +89,7 @@ public class OfferServiceImpl implements OfferService {
         return this.offerRepository
                 .findById(id)
                 .map(o -> mapDetailsView(currentUser, o))
-                .get();
+                .orElseThrow(() -> new ObjectNotFoundException("Offer with id " + id + " not found!"));
     }
 
     @Override
@@ -107,7 +107,8 @@ public class OfferServiceImpl implements OfferService {
 
         OfferEntity offerEntity = offer.get();
 
-        return isAdmin(user.get()) || offerEntity.getSeller().getUsername().equals(userName);
+        return isAdmin(user.get()) ||
+                (offerEntity.getSeller() != null && offerEntity.getSeller().getUsername().equals(userName));
     }
 
     private boolean isAdmin(UserEntity user) {
@@ -148,7 +149,7 @@ public class OfferServiceImpl implements OfferService {
         newOffer.setCreated(Instant.now());
         newOffer.setSeller(userEntity);
 
-        ModelEntity model = modelRepository.getById(offerAddBindModel.getModelId());
+        ModelEntity model = modelRepository.getReferenceById(offerAddBindModel.getModelId());
 
         newOffer.setModel(model);
 

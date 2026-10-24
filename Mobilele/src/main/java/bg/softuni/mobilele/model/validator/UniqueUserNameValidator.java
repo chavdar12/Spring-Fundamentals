@@ -2,8 +2,8 @@ package bg.softuni.mobilele.model.validator;
 
 import bg.softuni.mobilele.service.UserService;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class UniqueUserNameValidator implements ConstraintValidator<UniqueUserName, String> {
 

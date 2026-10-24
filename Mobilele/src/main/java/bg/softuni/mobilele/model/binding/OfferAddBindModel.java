@@ -3,7 +3,7 @@ package bg.softuni.mobilele.model.binding;
 import bg.softuni.mobilele.model.entity.enums.EngineEnum;
 import bg.softuni.mobilele.model.entity.enums.TransmissionEnum;
 
-import javax.validation.constraints.*;
+import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 
 public class OfferAddBindModel {
