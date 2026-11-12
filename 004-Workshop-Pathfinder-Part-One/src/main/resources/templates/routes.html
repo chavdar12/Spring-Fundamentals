@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<div class="wrapper">
+    <header th:replace="~{fragments/commons::navigation}"></header>
+    <section class="road" th:each="route : ${routes}">
+        <img th:src="${route.pictures.isEmpty()} ? '/images/pic4.jpg' : ${route.pictures[0].url}" alt="Route image">
+        <div>
+            <h2 th:text="${route.name}">Your Route</h2>
+            <p th:text="${#strings.abbreviate(route.description, 300)}">Description</p>
+            <a th:href="@{/routes/details/{id}(id=${route.id})}" class="btn">Learn More</a>
+        </div>
+    </section>
+</div>
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>

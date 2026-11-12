@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+<main>
+    <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Add product</span></h1>
+    <hr class="hr-3 w-25 bg-white"/>
+    <form class="mx-auto w-25 bg-blur rounded" method="POST" th:action="@{/products/add}" th:object="${product}">
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="name" class="h4 mb-2">Name</label>
+            </div>
+            <input type="text" class="form-control" th:field="*{name}"/>
+            <small class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</small>
+        </div>
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="description" class="h4 mb-2">Description</label>
+            </div>
+            <textarea class="form-control" th:field="*{description}"></textarea>
+            <small class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Error</small>
+        </div>
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="neededBefore" class="h4 mb-2">Before</label>
+            </div>
+            <input type="datetime-local" class="form-control" th:field="*{neededBefore}"/>
+            <small class="text-danger" th:if="${#fields.hasErrors('neededBefore')}" th:errors="*{neededBefore}">Error</small>
+        </div>
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="price" class="h4 mb-2">Price</label>
+            </div>
+            <input type="number" step="0.1" class="form-control" th:field="*{price}"/>
+            <small class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Error</small>
+        </div>
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="category" class="h4 mb-2">Category</label>
+            </div>
+            <select class="browser-default custom-select" th:field="*{category}">
+                <option value="">Select category</option>
+                <option th:each="c : ${categories}" th:value="${c}"
+                        th:text="${#strings.capitalize(#strings.toLowerCase(c))}">Food</option>
+            </select>
+            <small class="text-danger" th:if="${#fields.hasErrors('category')}" th:errors="*{category}">Error</small>
+        </div>
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" class="btn btn-warning  mb-3" value="Register">Add product</button>
+        </div>
+    </form>
+</main>
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>
