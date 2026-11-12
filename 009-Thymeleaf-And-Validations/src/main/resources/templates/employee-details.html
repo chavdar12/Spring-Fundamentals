@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+<main>
+    <div class="container">
+        <div class="jumbotron text-center rounded col-md-12 align-self-center" th:object="${employee}">
+            <div class="justify-content-center">
+                <h1>Employee Details</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-6 bg-dark">
+                    <h2>Employee</h2>
+                    <h4 th:text="|First Name: *{firstName}|">First Name: {firstName}</h4>
+                    <h4 th:text="|Last Name: *{lastName}|">Last Name: {lastName}</h4>
+                    <h4 th:text="|Education Level: *{educationLevel}|">Education Level: {educationLevel}</h4>
+                    <h4 th:text="|Job title: *{jobTitle}|">Job title: {jobTitle}</h4>
+                    <h4 th:text="|Birthdate: *{birthDate}|">Birthdate: {birthDate}</h4>
+                    <h4 th:text="|Salary: *{salary}$|">Salary: {salary in format 10$}</h4>
+                    <h4 th:text="|Company: *{company.name}|">Company: {company name}</h4>
+                    <form class="align-bottom" th:action="@{/employees/{id}/delete(id=*{id})}" method="POST">
+                        <button class="btn btn-danger align-bottom" type="submit">Delete employee</button>
+                    </form>
+                </div>
+                <div class="col-md-6 bg-dark"><img src="/pic/employee.png" height="350px" alt="Employee"></div>
+            </div>
+        </div>
+        <div th:replace="~{fragments/commons::footer}"></div>
+    </div>
+</main>
+</body>
+</html>

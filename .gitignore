@@ -34,3 +34,6 @@ bin/
 
 ### Local secrets ###
 .env
+
+### Node ###
+node_modules/

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+    <header th:replace="~{fragments/commons::navigation}"></header>
+<main class="p-5 align-content-center bg-blur my-register-div">
+    <h1 class="border-bottom mb-5">Login</h1>
+    <div class="d-flex justify-content-center">
+        <div class="row g-3 align-items-center">
+            <form th:action="@{/users/login}" method="POST">
+                <p class="text-danger" th:if="${badCredentials}">Incorrect username or password.</p>
+                <div>
+                    <div class="col-auto">
+                        <label for="inputUsername" class="col-form-label ">Username</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" name="username" th:value="${username}" required
+                               id="inputUsername" class="form-control">
+                    </div>
+                </div>
+                <div>
+                    <div class="col-auto">
+                        <label for="inputPassword" class="col-form-label ">Password</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="password" name="password" required id="inputPassword" class="form-control">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mt-2">
+                    <button class="btn btn-primary btn-block w-50" type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>
